@@ -40,6 +40,7 @@ def main():
 
   print(distancia_finais)
 
+  print(f"Melhor caminho: {individuos[0]}, distancia do caminho: {distancias_finais[0][1]}")
 
 def inicializarIndividuos():
   
