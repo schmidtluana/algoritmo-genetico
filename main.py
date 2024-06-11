@@ -35,8 +35,10 @@ def main():
 
     print(individuos)
 
-  distancias_finais = calcularDistancias(individuos)
-  print(distancias_finais)
+  distancia_finais = calcularDistancias(individuos)
+  distancia_finais.sort(key= lambda dist : dist[1])
+
+  print(distancia_finais)
 
 
 def inicializarIndividuos():
@@ -97,7 +99,7 @@ def gerarFilho(pais):
     if cidade == None:
       filho[index] = encontrarPrimeiraCidadeFaltando(cidades_faltando, pais[1])
 
-  return filho
+  return gerarMutacao(filho)
 
 def escolherPais(individuos: list, distancias: list):
 
@@ -119,6 +121,24 @@ def escolherPais(individuos: list, distancias: list):
       break
 
   return (individuos[index_pai1], individuos[index_pai2])
+
+def gerarMutacao(individuo: list):
+
+  chance_mutacao = random.choice(range(0,10))
+
+  if (chance_mutacao != 0):
+    return individuo
+  
+  cidade1 = random.choice(CIDADES)
+  cidade2 = random.choice(CIDADES)
+
+  index_cidade1 = individuo.index(cidade1)
+  index_cidade2 = individuo.index(cidade2)
+
+  individuo[index_cidade1] = cidade2
+  individuo[index_cidade2] = cidade1
+
+  return individuo
 
 
 def encontrarPrimeiraCidadeFaltando(cidades_faltando, pai):
