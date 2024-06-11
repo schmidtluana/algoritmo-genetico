@@ -35,10 +35,10 @@ def main():
 
     print(individuos)
 
-  distancia_finais = calcularDistancias(individuos)
-  distancia_finais.sort(key= lambda dist : dist[1])
+  distancias_finais = calcularDistancias(individuos)
+  distancias_finais.sort(key= lambda dist : dist[1])
 
-  print(distancia_finais)
+  print(distancias_finais)
 
   print(f"Melhor caminho: {individuos[0]}, distancia do caminho: {distancias_finais[0][1]}")
 
